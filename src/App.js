@@ -1,18 +1,26 @@
 import React from 'react';
-import Prismic from '@prismicio/client';
-import { Date, Link, RichText } from 'prismic-reactjs';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
-import Blog from './components/Blog'
+import {
+    HomePage, ContactPage, AboutPage, NotFoundPage,
+} from './pages/index';
 
-const App = () => {
-    return (
-        <>
-            <h1>
-                BLOG
-            </h1>
-            <Blog />
-        </>
-    );
-};
+const App = () => (
+    <>
+        {/* <MetaDecorator /> // react helmet */}
+
+        <Router>
+            <Link to="/">{"HOME"}</Link>
+            <Link to="/contact">{"CONTACT"}</Link>
+            <Link to="/about">{"ABOUT"}</Link>
+            <Switch>
+                <Route exact path='/' component={HomePage} />
+                <Route exact path='/contact' component={ContactPage} />
+                <Route exact path='/about' component={AboutPage} />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </Router>
+    </>
+);
 
 export default App;
