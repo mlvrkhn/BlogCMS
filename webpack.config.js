@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 module.exports = {
     mode: 'development',
@@ -12,7 +12,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx'],
     },
     module: {
         rules: [
