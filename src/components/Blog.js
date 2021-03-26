@@ -1,32 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import Prismic from '@prismicio/client';
-import { Date, Link, RichText } from 'prismic-reactjs';
+import React from 'react';
 
-import { Client } from '../../prismic-config';
-
-import {linkResolver} from '../../prismic-config'
-
-const Blog = () => {
-
-    const [ docData, setDocData ] = useState('');
-    useEffect(() => {
-        const fetchData = async () => {
-            console.log('fetchin data YO...');
-            const response = await Client.query(
-                Prismic.Predicates.at('document.type', 'blog-post')
-            );
-            if (response) {
-                setDocData(response.results);
-            }
-        };
-        fetchData();
-    }, []);
-    
+const Blog = ({posts}) => {
+    console.log('🚀 ~ Blog ~ posts', posts);
     return (
-        <div>
-            WELKOMMENT
-        </div>
-    )
-}
+        <main>
+            <aside>COSTAM</aside>
+            {/* {posts.map((post) => {
+                console.log(post.data.body);
+                return (
+                    <article>
+                        <h2>title</h2>
+                        <p>title</p>
+                        <img />
+                        <p>title</p>
+                    </article>
+                );
+            })} */}
+        </main>
+    );
+};
 
 export default Blog;
