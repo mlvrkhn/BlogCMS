@@ -8,8 +8,6 @@ const Text = ({slice}) => {
     return (
         <section>
             {RichText.render(slice.primary.text, linkResolver)}
-            {/* {slice.data.text} */}
-            {/* {RichText.render(document.data.text, linkResolver)} */}
         </section>
     );
 }

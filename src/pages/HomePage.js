@@ -34,14 +34,18 @@ const HomePage = () => {
     }, []);
 
     if (blogData) {
+        const blogSlices = blogData.map((blogPost, index) => {
+        console.log('🚀 ~ blogSlices ~ blogPost', blogPost)
+            const dateString = Date(blogPost.data.date).toString();
+            console.log('🚀 ~ HomePage ~ dateString', dateString);
+            return <Slicer toSlice={blogPost.data.body} key={`slice-${index}`} />;
+        });
+
         return (
             <>
                 <DefaultLayout>
-                    {/* <Slicer toSlice={blogData} /> */}
-                    {blogData.map((blogPost, index) => (
-                        <Slicer toSlice={blogPost.data.body} key={`slice-${index}`} />
-                    ))}
-                    ;
+                    {}
+                    {/* {blogSlices} */}
                 </DefaultLayout>
             </>
         );

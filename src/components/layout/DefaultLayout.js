@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const DefaultLayout = ({children} = {}) => {
-    console.log(children);
+    // console.log(children);
     return (
         <>
             <Header>header </Header>
