@@ -7,12 +7,12 @@ import { Client } from '../../prismic-config';
 import Header from '../components/layout/Header';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import Footer from '../components/layout/Footer';
-import NotFoundPage from '../pages/NotFoundPage';
+import NotFoundPage from './NotFoundPage';
 
 import Slicer from '../components/slices/Slicer';
 
 const HomePage = () => {
-    const [blogData, setBlogData] = useState([]);
+    const [blogData, setBlogData] = useState(null);
     const [notFound, toggleNotFound] = useState(false);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const HomePage = () => {
                 }
             } catch (error) {
                 console.error(error);
-                toggleNotFound(true);
+                toggleNotFound();
             }
         };
         fetchData();
@@ -37,7 +37,11 @@ const HomePage = () => {
         return (
             <>
                 <DefaultLayout>
-                    <Slicer toSlice={blogData} />
+                    {/* <Slicer toSlice={blogData} /> */}
+                    {blogData.map((blogPost, index) => (
+                        <Slicer toSlice={blogPost.data.body} key={`slice-${index}`} />
+                    ))}
+                    ;
                 </DefaultLayout>
             </>
         );

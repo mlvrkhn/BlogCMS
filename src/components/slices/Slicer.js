@@ -1,19 +1,21 @@
 import React from 'react';
-import Blog from '../Blog';
+import Text from './Text';
 
-const Slicer = ({ toSlice }) => (
-    <div className="container">
-        {
-            toSlice.map((slice, index) => {
-                switch (slice.type) {
-                case ('blog-post'):
-                    return <Blog posts={slice} key={`slice-${index}`}/>;
-                default:
-                    return null;
+const Slicer = ({ toSlice }) => {
+    console.log(toSlice);
+
+    return (
+        <div className='container'>
+            {toSlice.map((slice, index) => {
+                switch (slice.slice_type) {
+                    case 'text':
+                        return <Text slice={slice} key={`slice-${index}`} />;
+                    default:
+                        return null;
                 }
-            })
-        }
-    </div>
-);
+            })}
+        </div>
+    );
+};
 
 export default Slicer;
