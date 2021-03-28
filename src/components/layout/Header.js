@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const headerStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    border: '1px solid black',
+    padding: '30px',
+};
+
 const Header = () => (
-    <header style={{ display: 'flex', flexDirection: 'column'}}>
-        <Link to="/">
-            <div className="logo">Logo here</div>
+    <header style={headerStyle}>
+        <Link to="/" className="logo">
+            <img rel="shortcut icon" type="icon" src="../../../public/assets/globe.svg" style={{width: '50%'}}></img>
         </Link>
         <nav>
             <ul>

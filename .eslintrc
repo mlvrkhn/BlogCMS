@@ -1,15 +1,13 @@
-{   
-    "extends": ["airbnb", "airbnb/hooks"],
-    "rules": {
-        "react/jsx-filename-extension": [
-            0
-        ],
-        "indent": ["warn", 4],
-        "react/jsx-indent": ["warn", 4],
-        "react/jsx-indent-props": ["warn", 4],
-    },
-    "globals": {
-        "window": true,
-        "document": true
-    }
+{
+	"extends": ["airbnb", "airbnb/hooks"],
+	"rules": {
+		"react/jsx-filename-extension": [0],
+		"indent": ["warn", 4],
+		"react/jsx-indent": ["warn", 4],
+		"react/jsx-indent-props": ["warn", 4]
+	},
+	"globals": {
+		"window": true,
+		"document": true
+	}
 }
