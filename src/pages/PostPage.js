@@ -38,7 +38,7 @@ const PostPage = ({ match }) => {
 
         return (
             <DefaultLayout>
-                <article style={{ width: '600px', margin: 'auto' }}>
+                <article style={{ width: '80%', margin: 'auto' }}>
                     {RichText.render(postData.data.title, linkResolver)}
                     {formattedDate}
                     <Slicer toSlice={postData.data.body} />

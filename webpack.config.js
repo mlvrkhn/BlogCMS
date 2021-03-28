@@ -21,6 +21,21 @@ module.exports = {
                 exclude: /node_modules/,
                 use: 'babel-loader',
             },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(ttf|otf|woff|woff2)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[hash].[ext]',
+                        outputPath: 'fonts',
+                    },
+                },
+            },
         ],
     },
     plugins: [

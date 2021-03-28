@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledFooter from './Footer.styled'
+import StyledFooter from '../../styled/Footer.styled'
 
 const Footer = () => {
     console.log('footer');

@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Prismic from '@prismicio/client';
-import { Date, Link as PrismicLink, RichText } from 'prismic-reactjs';
+import { Date, RichText } from 'prismic-reactjs';
 import { format } from 'date-fns-tz';
 import { Link as RouterLink } from 'react-router-dom';
 import { Client, linkResolver } from '../../prismic-config';
-
-import Header from '../components/layout/Header';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import Footer from '../components/layout/Footer';
 import NotFoundPage from './NotFoundPage';
 
 import Slicer from '../components/slices/Slicer';
 
 const StyledPostPreview = styled.div`
-	border: 3px solid green;
+	padding: 2.5rem;
+    margin: auto;
 `;
 
 const HomePage = () => {
@@ -52,7 +50,6 @@ const HomePage = () => {
                 </StyledPostPreview>
             );
         });
-
         return (
             <>
                 <DefaultLayout>

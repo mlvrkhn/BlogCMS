@@ -3,6 +3,7 @@ import {
     HashRouter as Router, Route, Switch, NavLink,
 } from 'react-router-dom';
 
+import { ThemeProvider } from 'styled-components';
 import {
     HomePage,
     ContactPage,
@@ -12,11 +13,14 @@ import {
 } from './pages/index';
 
 import MetaDecorator from './MetaDecorator';
-import StyledAppContainer from './styled/App.styled'
+import StyledAppContainer from './styled/App.styled';
+
+import theme from './styled/theme';
+import GlobalStyle from './styled/GlobalStyle';
 
 const App = () => {
     const nav = (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
             <NavLink to="/"> HOME </NavLink>
             <NavLink to="/contact">CONTACT</NavLink>
             <NavLink to="/about">ABOUT</NavLink>
@@ -39,13 +43,16 @@ const App = () => {
     };
 
     return (
-        <StyledAppContainer>
-            <MetaDecorator {...exampleObject} />
-            <Router>
-                {/* {nav} */}
-                {routes}
-            </Router>
-        </StyledAppContainer>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <StyledAppContainer>
+                <MetaDecorator {...exampleObject} />
+                <Router>
+                    {/* {nav} */}
+                    {routes}
+                </Router>
+            </StyledAppContainer>
+        </ThemeProvider>
     );
 };
 
