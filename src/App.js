@@ -43,16 +43,18 @@ const App = () => {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+        <>
             <GlobalStyle />
-            <StyledAppContainer>
-                <MetaDecorator {...exampleObject} />
-                <Router>
-                    {/* {nav} */}
-                    {routes}
-                </Router>
-            </StyledAppContainer>
-        </ThemeProvider>
+            <ThemeProvider theme={theme}>
+                <StyledAppContainer>
+                    <MetaDecorator {...exampleObject} />
+                    <Router>
+                        {/* {nav} */}
+                        {routes}
+                    </Router>
+                </StyledAppContainer>
+            </ThemeProvider>
+        </>
     );
 };
 
