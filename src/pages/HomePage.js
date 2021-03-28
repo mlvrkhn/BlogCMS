@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Prismic from '@prismicio/client';
-import { Date, RichText } from 'prismic-reactjs';
+import { Date, RichText, Text } from 'prismic-reactjs';
 import { format } from 'date-fns-tz';
 import { Link as RouterLink } from 'react-router-dom';
 import { Client, linkResolver } from '../../prismic-config';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import NotFoundPage from './NotFoundPage';
-
-import Slicer from '../components/slices/Slicer';
-
-const StyledPostPreview = styled.div`
-	padding: 2.5rem;
-    margin: auto;
-`;
+import StyledPostPreview from '../styled/PostPreview.styled';
 
 const HomePage = () => {
     const [blogData, setBlogData] = useState(null);
@@ -43,10 +37,17 @@ const HomePage = () => {
 
             return (
                 <StyledPostPreview key={`postPreview-${index}`}>
+                    <div>
+                        <span>
+                            {formattedDate}
+                        </span>
+                        <span>
+                            {`Author: ${blogPost.data.author}`}
+                        </span>
+                    </div>
                     <RouterLink to={`/post/${blogPost.uid}`}>
                         {RichText.render(blogPost.data.title, linkResolver)}
                     </RouterLink>
-                    {formattedDate}
                 </StyledPostPreview>
             );
         });

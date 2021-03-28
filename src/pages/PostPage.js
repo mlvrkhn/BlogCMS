@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RichText, Date } from 'prismic-reactjs';
 import { format } from 'date-fns-tz';
+import { Link } from 'react-router-dom';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import { Client, linkResolver } from '../../prismic-config';
 
@@ -38,7 +39,21 @@ const PostPage = ({ match }) => {
 
         return (
             <DefaultLayout>
-                <article style={{ width: '80%', margin: 'auto' }}>
+                <article
+                    style={{
+                        width: '80%',
+                        margin: 'auto',
+                        justifyItems: 'center',
+                    }}
+                >
+                    <Link to="/">
+                        <img
+                            rel=""
+                            type="icon"
+                            src="../../public/assets/arrow-left.svg"
+                            style={{ height: '2em' }}
+                        />
+                    </Link>
                     {RichText.render(postData.data.title, linkResolver)}
                     {formattedDate}
                     <Slicer toSlice={postData.data.body} />

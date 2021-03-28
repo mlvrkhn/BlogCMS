@@ -19,14 +19,6 @@ import theme from './styled/theme';
 import GlobalStyle from './styled/GlobalStyle';
 
 const App = () => {
-    const nav = (
-        <div>
-            <NavLink to="/"> HOME </NavLink>
-            <NavLink to="/contact">CONTACT</NavLink>
-            <NavLink to="/about">ABOUT</NavLink>
-        </div>
-    );
-
     const routes = (
         <Switch>
             <Route exact path="/" component={HomePage} />
@@ -44,12 +36,11 @@ const App = () => {
 
     return (
         <>
-            <GlobalStyle />
             <ThemeProvider theme={theme}>
+                <GlobalStyle />
                 <StyledAppContainer>
                     <MetaDecorator {...exampleObject} />
                     <Router>
-                        {/* {nav} */}
                         {routes}
                     </Router>
                 </StyledAppContainer>

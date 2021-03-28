@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Poppins', Verdana, Tahoma, sans-serif;
         line-height: 1.5em;
+        background-color: ${({ theme }) => theme.colors.bright};
     }
 `;
 
