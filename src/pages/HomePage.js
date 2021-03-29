@@ -42,7 +42,6 @@ const HomePage = () => {
             const dateString = Date(blogPost.data.date);
             const formattedDate = format(dateString, 'MMMM dd, yyyy');
             const postImage = blogPost.data.body.map((post) => {
-                console.log('🚀 ~ postImage ~ post', post)
                 if (post.slice_type === 'post_image') {
                     const imageUrl = post.primary.post_image.url;
                     const imageAlt = post.primary.post_image.alt;
