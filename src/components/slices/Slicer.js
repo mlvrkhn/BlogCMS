@@ -3,7 +3,7 @@ import Text from './Text';
 import Image from './Image';
 
 const Slicer = ({ toSlice }, from) => {
-console.log('🚀 ~ Slicer ~ from', from)
+console.log('🚀 ~ Slicer ~ from', from);
     console.log(toSlice);
     return (
         <div className="container">

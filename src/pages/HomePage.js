@@ -21,9 +21,9 @@ const HomePage = () => {
         const fetchData = async () => {
             togglePending(true);
             try {
-                const response = await Client.query(Prismic.Predicates.at('document.type', 'blog-post'));
-                if (response) {
-                    setBlogData(response.results);
+                const res = await Client.query(Prismic.Predicates.at('document.type', 'blog-post'));
+                if (res) {
+                    setBlogData(res.results);
                 } else {
                     console.warn('Homepage document was not found');
                     toggleNotFound();
@@ -38,33 +38,42 @@ const HomePage = () => {
     }, []);
 
     if (blogData) {
-        const blogSlices = blogData.map((blogPost, index) => {
+        const blogPostPreview = blogData.map((blogPost, index) => {
             const dateString = Date(blogPost.data.date);
             const formattedDate = format(dateString, 'MMMM dd, yyyy');
-
+            const postImage = blogPost.data.body.map((post) => {
+                console.log('🚀 ~ postImage ~ post', post)
+                if (post.slice_type === 'post_image') {
+                    const imageUrl = post.primary.post_image.url;
+                    const imageAlt = post.primary.post_image.alt;
+                    return (
+                        <img
+                            key={imageAlt}
+                            src={imageUrl}
+                            alt={imageAlt}
+                            style={{ width: '100%' }}
+                        />
+                    );
+                }
+            });
             return (
                 <StyledPostPreview key={`postPreview-${index}`}>
                     <div>
-                        <span>
-                            {formattedDate}
-                        </span>
-                        <span>
-                            {`Author: ${blogPost.data.author}`}
-                        </span>
+                        <span>{formattedDate}</span>
+                        <span>{`author: ${blogPost.data.author}`}</span>
                     </div>
                     <RouterLink to={`/post/${blogPost.uid}`}>
                         {RichText.render(blogPost.data.title, linkResolver)}
-                        <p>Lorem ipsum dolor sit amet, consectetur adip inc</p>
+                        {RichText.render(blogPost.data.post_intro, linkResolver)}
+                        {postImage}
                     </RouterLink>
                 </StyledPostPreview>
             );
         });
         return (
-            <>
-                <DefaultLayout>
-                    {blogSlices}
-                </DefaultLayout>
-            </>
+            <DefaultLayout>
+                {blogPostPreview}
+            </DefaultLayout>
         );
     }
     if (pending) {

@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     }
     a {
         text-decoration: none;
+        color: #000;
     }
     p {
         line-height: 1.5em;

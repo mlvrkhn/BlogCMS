@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoadingPage = () => {
     return (
-        <div>
+        <div className="loading_page" style={{ display: 'flex' }}>
             Loading...
         </div>
     )

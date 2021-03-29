@@ -40,7 +40,6 @@ const PostPage = ({ match }) => {
             <DefaultLayout>
                 <article
                     style={{
-                        width: '80%',
                         margin: 'auto',
                         justifyItems: 'center',
                     }}
