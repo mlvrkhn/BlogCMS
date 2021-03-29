@@ -4,7 +4,6 @@ const StyledPostPreview = styled.div`
 	padding: 2.5rem;
 	display: flex;
 	flex-direction: row;
-	margin: auto;
 	font-size: ${({ theme }) => theme.fontSize.large};
 	& > div {
 		display: block;

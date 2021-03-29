@@ -10,7 +10,8 @@ const DefaultLayout = ({ children } = {}) => {
 	return (
 		<>
 			<Header>header </Header>
-			{children}
+				{children}
+				<div>SIDEBAR</div>
 			<Footer> footer</Footer>
 		</>
 	);

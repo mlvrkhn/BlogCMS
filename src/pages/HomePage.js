@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { Link as RouterLink } from 'react-router-dom';
+
+import { Client, linkResolver } from '../../prismic-config';
+
 import Prismic from '@prismicio/client';
 import { Date, RichText, Text } from 'prismic-reactjs';
+
 import { format } from 'date-fns-tz';
-import { Link as RouterLink } from 'react-router-dom';
-import { Client, linkResolver } from '../../prismic-config';
+
 import DefaultLayout from '../components/layout/DefaultLayout';
 import NotFoundPage from './NotFoundPage';
+import LoadingPage from './LoadingPage';
 import StyledPostPreview from '../styled/PostPreview.styled';
 
 const HomePage = () => {
     const [blogData, setBlogData] = useState(null);
     const [notFound, toggleNotFound] = useState(false);
+    const [pending, togglePending] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
+            togglePending(true);
             try {
                 const response = await Client.query(Prismic.Predicates.at('document.type', 'blog-post'));
                 if (response) {
                     setBlogData(response.results);
                 } else {
                     console.warn('Homepage document was not found');
+                    toggleNotFound();
                 }
             } catch (error) {
                 console.error(error);
                 toggleNotFound();
             }
+            togglePending(false);
         };
         fetchData();
     }, []);
@@ -58,10 +66,11 @@ const HomePage = () => {
                 </DefaultLayout>
             </>
         );
-    } if (notFound) {
-        return <NotFoundPage />;
     }
-    return null;
+    if (pending) {
+        return <LoadingPage />;
+    }
+    return <NotFoundPage />;
 };
 
 export default HomePage;
