@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { Client, linkResolver } from '../../prismic-config';
-
 import Prismic from '@prismicio/client';
 import { Date, RichText, Text } from 'prismic-reactjs';
 
 import { format } from 'date-fns-tz';
+import { Client, linkResolver } from '../../prismic-config';
 
 import DefaultLayout from '../components/layout/DefaultLayout';
 import NotFoundPage from './NotFoundPage';
@@ -55,6 +54,7 @@ const HomePage = () => {
                     </div>
                     <RouterLink to={`/post/${blogPost.uid}`}>
                         {RichText.render(blogPost.data.title, linkResolver)}
+                        <p>Lorem ipsum dolor sit amet, consectetur adip inc</p>
                     </RouterLink>
                 </StyledPostPreview>
             );
@@ -70,7 +70,10 @@ const HomePage = () => {
     if (pending) {
         return <LoadingPage />;
     }
-    return <NotFoundPage />;
+    if (notFound) {
+        return <NotFoundPage />;
+    }
+    return null;
 };
 
 export default HomePage;

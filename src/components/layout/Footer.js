@@ -4,7 +4,7 @@ import StyledFooter from '../../styled/Footer.styled'
 const Footer = () => {
     console.log('footer');
     return (
-    <StyledFooter>HEY FOOTER YO</StyledFooter>
+    <StyledFooter className="footer">HEY FOOTER YO</StyledFooter>
 )
 };
 

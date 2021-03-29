@@ -35,7 +35,6 @@ const PostPage = ({ match }) => {
     if (postData) {
         const dateString = Date(postData.data.date);
         const formattedDate = format(dateString, 'MMMM dd, yyyy');
-        const title = postData.data.title[0];
 
         return (
             <DefaultLayout>
@@ -50,8 +49,9 @@ const PostPage = ({ match }) => {
                         <img
                             rel=""
                             type="icon"
+                            alt="go-back-arrow"
                             src="../../public/assets/arrow-left.svg"
-                            style={{ height: '2em' }}
+                            style={{ height: '2em', marginBottom: '2em' }}
                         />
                     </Link>
                     {RichText.render(postData.data.title, linkResolver)}

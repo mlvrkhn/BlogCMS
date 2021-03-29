@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const theme = {
     colors: {
         dark: '#343434',
-        bright: '#E4D9C5',
+        bright: '#FFF5EE',
         coral: '#F56476',
         pink: '#E43F6F',
     },
@@ -12,6 +12,7 @@ const theme = {
         medium: '1rem',
         large: '1.2rem',
         xlarge: '1.5rem',
+        xxlarge: '1.5rem',
     },
     innerPadding: {
         small: '0.5rem',
@@ -31,9 +32,9 @@ const theme = {
     },
     boxShadow: {
         outer:
-            '3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 6px rgb(255, 255, 255, 0.08)',
+			'3px 3px 12px rgba(0, 0, 0, 0.2), -3px -3px 6px rgb(255, 255, 255, 0.08)',
         inner:
-            '4px 6px 6px rgba(0, 0, 0, 0.2) inset, -4px -4px 6px rgb(255, 255, 255, 0.07) inset;',
+			'4px 6px 6px rgba(0, 0, 0, 0.2) inset, -4px -4px 6px rgb(255, 255, 255, 0.07) inset;',
     },
 };
 

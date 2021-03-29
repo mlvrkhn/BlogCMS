@@ -112,9 +112,9 @@ const ResetStyle = css`
         line-height: 1;
     }
     ol,
-    ul {
+    /* ul {
         list-style: none;
-    }
+    } */
     blockquote,
     q {
         quotes: none;

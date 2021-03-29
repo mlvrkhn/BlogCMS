@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 const StyledAppContainer = styled.div`
-	height: 150vw;
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    transform: translateZ(50%)
+    & .blog_title {
+        position: relative;
+        font-size: 3em;
+        display: flex;
+        justify-content: center;
+        margin: 1em 0;
+    }
+    /* & .footer {
+        width: 100vw;
+        left: -200px;
+    } */
 `;
 
 export default StyledAppContainer;
