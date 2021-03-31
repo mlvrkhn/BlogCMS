@@ -12,12 +12,15 @@ import NotFoundPage from './NotFoundPage';
 import LoadingPage from './LoadingPage';
 import StyledPostPreview from '../styled/PostPreview.styled';
 
+import api from '../api/PrismicAPI';
+
 const HomePage = () => {
     const [blogData, setBlogData] = useState(null);
     const [notFound, toggleNotFound] = useState(false);
     const [pending, togglePending] = useState(false);
 
     useEffect(() => {
+        console.log('api', api.getAllPosts());
         const fetchData = async () => {
             togglePending(true);
             try {
