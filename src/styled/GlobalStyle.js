@@ -29,6 +29,15 @@ const GlobalStyle = createGlobalStyle`
     h1 {
         font-size: ${({ theme }) => theme.fontSize.xxlarge};
     }
+    .postPreview-img {
+        width: 100%;
+    }
+    .default_layout {
+        display: flex;
+        min-height: 1200px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `;
 
 export default GlobalStyle;

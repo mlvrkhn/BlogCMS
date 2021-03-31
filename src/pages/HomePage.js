@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-
-import Prismic from '@prismicio/client';
-import { Date, RichText, Text } from 'prismic-reactjs';
-
-import { format } from 'date-fns-tz';
-import { Client, linkResolver } from '../../prismic-config';
 
 import DefaultLayout from '../components/layout/DefaultLayout';
+import PostPreview from '../components/layout/PostPreview';
 import NotFoundPage from './NotFoundPage';
 import LoadingPage from './LoadingPage';
-import StyledPostPreview from '../styled/PostPreview.styled';
 
 import api from '../api/PrismicAPI';
 
 const HomePage = () => {
-    const [blogData, setBlogData] = useState(null);
+    const [blogPosts, setBlogPosts] = useState(null);
     const [notFound, toggleNotFound] = useState(false);
     const [pending, togglePending] = useState(false);
 
     useEffect(() => {
-        console.log('api', api.getAllPosts());
-        const fetchData = async () => {
-            togglePending(true);
+        togglePending(true);
+        const fetchPosts = async () => {
             try {
-                const res = await Client.query(Prismic.Predicates.at('document.type', 'blog-post'));
-                if (res) {
-                    setBlogData(res.results);
+                const posts = await api.getAllPosts();
+                if (posts) {
+                    setBlogPosts(posts);
                 } else {
-                    console.warn('Homepage document was not found');
                     toggleNotFound();
                 }
             } catch (error) {
@@ -37,53 +28,18 @@ const HomePage = () => {
             }
             togglePending(false);
         };
-        fetchData();
+        fetchPosts();
     }, []);
 
-    if (blogData) {
-        const blogPostPreview = blogData.map((blogPost, index) => {
-            const dateString = Date(blogPost.data.date);
-            const formattedDate = format(dateString, 'MMMM dd, yyyy');
-            const postImage = blogPost.data.body.map((post) => {
-                if (post.slice_type === 'post_image') {
-                    const imageUrl = post.primary.post_image.url;
-                    const imageAlt = post.primary.post_image.alt;
-                    return (
-                        <img
-                            key={imageAlt}
-                            src={imageUrl}
-                            alt={imageAlt}
-                            style={{ width: '100%' }}
-                        />
-                    );
-                }
-            });
-            return (
-                <StyledPostPreview key={`postPreview-${index}`}>
-                    <div>
-                        <span>{formattedDate}</span>
-                        <span>{`author: ${blogPost.data.author}`}</span>
-                    </div>
-                    <RouterLink to={`/post/${blogPost.uid}`}>
-                        {RichText.render(blogPost.data.title, linkResolver)}
-                        {RichText.render(blogPost.data.post_intro, linkResolver)}
-                        {postImage}
-                    </RouterLink>
-                </StyledPostPreview>
-            );
-        });
+    if (blogPosts) {
         return (
             <DefaultLayout>
-                {blogPostPreview}
+                <PostPreview posts={blogPosts} />
             </DefaultLayout>
         );
     }
-    if (pending) {
-        return <LoadingPage />;
-    }
-    if (notFound) {
-        return <NotFoundPage />;
-    }
+    if (pending) return <LoadingPage />;
+    if (notFound) return <NotFoundPage />;
     return null;
 };
 
