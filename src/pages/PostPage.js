@@ -33,6 +33,7 @@ const PostPage = ({ match }) => {
     }, [uid]);
 
     if (postData) {
+        console.log('🚀 ~ PostPage ~ postData', postData)
         const dateString = Date(postData.data.date);
         const formattedDate = format(dateString, 'MMMM dd, yyyy');
 
@@ -55,6 +56,7 @@ const PostPage = ({ match }) => {
                     </Link>
                     {RichText.render(postData.data.title, linkResolver)}
                     {formattedDate}
+                    {console.log(postData.data.body)}
                     <Slicer toSlice={postData.data.body} />
                 </article>
             </DefaultLayout>

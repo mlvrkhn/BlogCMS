@@ -11,11 +11,11 @@ const PostPreview = ({ posts }) => posts.map((blogPost, postIndex) => {
     const dateString = Date(blogPost.data.date);
     const formattedDate = format(dateString, 'MMMM dd, yyyy');
     const postImage = blogPost.data.body.map((post, imgIndex) => {
-        const { url, alt } = post.primary.post_image;
         if (post.slice_type === 'post_image') {
+            const { url, alt } = post.primary.post_image;
             return (
                 <img
-                    className="postPreview-img"
+                    className="post_preview-img"
                     key={`postImage-${imgIndex}`}
                     src={url}
                     alt={alt}

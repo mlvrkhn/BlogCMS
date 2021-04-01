@@ -7,31 +7,30 @@ import { Client } from '../../prismic-config';
 class PrismicAPI {
 	async getAllPosts() {
 		const posts = await Client.query(
-			Prismic.Predicates.at('document.type', 'blog-post')
+			Prismic.Predicates.at('document.type', 'blog-post'),
 		);
 		return posts.results;
 	}
 
 	async getCategories() {
 		const categories = await Client.query(
-			Prismic.Predicates.at('document.type', 'category')
+			Prismic.Predicates.at('document.type', 'category'),
 		);
 		return categories.results;
-		// return categories.results.map((cat) => cat.uid);
 	}
 
-    async getID(category) {
-        const cat = await Client.getByUID('category', category)
+    async getID(uid) {
+        const cat = await Client.getByUID('category', uid);
         return cat.id;
     }
 
 	async getPostsByCategory(category) {
         const id = await this.getID(category);
-
 		const postsByCategory = await Client.query(
 			Prismic.Predicates.at('my.blog-post.category', id)
 		);
-        console.log('🚀 ~ getPostsByCategory ~ postsByCategory', postsByCategory)
+        console.log('🚀 ~ getPostsByCategory ~ postsByCategory', postsByCategory.results)
+        return postsByCategory.results;
 	}
 }
 

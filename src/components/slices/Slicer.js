@@ -2,8 +2,7 @@ import React from 'react';
 import Text from './Text';
 import Image from './Image';
 
-const Slicer = ({ toSlice }, from) => {
-console.log('🚀 ~ Slicer ~ from', from);
+const Slicer = ({ toSlice }) => {
     console.log(toSlice);
     return (
         <div className="container">
@@ -11,7 +10,7 @@ console.log('🚀 ~ Slicer ~ from', from);
                 const type = slice.slice_type;
 
                 switch (type) {
-                case 'text':
+                case 'text1':
                     return <Text slice={slice} key={`slice-${index}`} />;
                 case 'post_image':
                     return <Image slice={slice} key={`slice-${index}`} />;

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import DefaultLayout from '../components/layout/DefaultLayout';
-import PostPreview from '../components/layout/PostPreview';
-import NotFoundPage from './NotFoundPage';
-import LoadingPage from './LoadingPage';
+// import DefaultLayout from '../components/layout/DefaultLayout';
+// import PostPreview from '../components/layout/PostPreview';
+// import NotFoundPage from './NotFoundPage';
+// import LoadingPage from './LoadingPage';
+
+import { NotFoundPage, LoadingPage } from './index';
+import { DefaultLayout, PostPreview } from '../components/layout/index';
 
 import api from '../api/PrismicAPI';
 
@@ -13,6 +16,7 @@ const HomePage = () => {
     const [pending, togglePending] = useState(false);
 
     useEffect(() => {
+    console.log('home');
         togglePending(true);
         const fetchPosts = async () => {
             try {

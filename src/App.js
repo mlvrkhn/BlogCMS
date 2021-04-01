@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    HashRouter as Router, Route, Switch, NavLink,
+    HashRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
@@ -10,7 +10,7 @@ import {
     AboutPage,
     NotFoundPage,
     PostPage,
-    CategoryPage
+    CategoryPage,
 } from './pages/index';
 
 import MetaDecorator from './MetaDecorator';
@@ -19,18 +19,17 @@ import StyledAppContainer from './styled/App.styled';
 import theme from './styled/theme';
 import GlobalStyle from './styled/GlobalStyle';
 
-
 const App = () => {
     const routes = (
-		<Switch>
-			<Route exact path='/' component={HomePage} />
-			<Route exact path='/category/:category' component={CategoryPage} />
-			<Route exact path='/contact' component={ContactPage} />
-			<Route exact path='/about' component={AboutPage} />
-			<Route exact path='/post/:uid' component={PostPage} />
-			<Route component={NotFoundPage} />
-		</Switch>
-	);
+        <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/post/:uid" component={PostPage} />
+            <Route exact path="/category/:category" component={CategoryPage} />
+            <Route exact path="/contact" component={ContactPage} />
+            <Route exact path="/about" component={AboutPage} />
+            <Route component={NotFoundPage} />
+        </Switch>
+    );
 
     const exampleObject = {
         name: 'example name',

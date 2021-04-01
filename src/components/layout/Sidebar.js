@@ -24,10 +24,11 @@ const Sidebar = () => {
         fetchCategories();
     }, []);
 
-    const nav = documents.map((category) => {
+    const nav = documents.map((category, index) => {
+        console.log('🚀 ~ nav ~ category', category)
         const categoryName = category.data.category_name[0].text;
         return (
-            <RouterLink to={`/category/${category.uid}`}>
+            <RouterLink to={`/category/${category.uid}`} key={`sidebar-${index}`}>
                 {categoryName}
             </RouterLink>
         );

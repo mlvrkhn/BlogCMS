@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     h1 {
         font-size: ${({ theme }) => theme.fontSize.xxlarge};
     }
-    .postPreview-img {
+    .post_preview-img {
         width: 100%;
     }
     .default_layout {
