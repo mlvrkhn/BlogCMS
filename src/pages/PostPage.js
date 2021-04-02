@@ -29,11 +29,9 @@ const PostPage = ({ match }) => {
             }
         };
         fetchPostData();
-        // window.scrollTo(0, 0);
     }, [uid]);
 
     if (postData) {
-        console.log('🚀 ~ PostPage ~ postData', postData);
         const dateString = Date(postData.data.date);
         const formattedDate = format(dateString, 'MMMM dd, yyyy');
 
@@ -55,7 +53,6 @@ const PostPage = ({ match }) => {
                     <div style={{ padding: '1em 0' }}>
                         {formattedDate}
                     </div>
-
                     <Slicer toSlice={postData.data.body} />
                 </article>
             </DefaultLayout>

@@ -32,10 +32,9 @@ const HomePage = () => {
     if (blogPosts) {
         return (
             <DefaultLayout>
-                <main style={{ display: 'flex' }}>
+                <main style={{ display: 'flex', maxWidth: '900px', margin: '0 auto'}}>
                     <div>
                         <PostPreview posts={blogPosts} />
-
                     </div>
                     <Sidebar />
                 </main>
