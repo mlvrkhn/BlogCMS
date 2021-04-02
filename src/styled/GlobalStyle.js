@@ -24,7 +24,8 @@ const GlobalStyle = createGlobalStyle`
     p {
         line-height: 1.5em;
         font-size: ${({ theme }) => theme.fontSize.medium};
-        margin: 1em 0;
+        margin: 2em 0;
+        text-align: justify;
     }
     .blog_title {
         font-size: ${({ theme }) => theme.fontSize.xxlarge};
@@ -34,12 +35,17 @@ const GlobalStyle = createGlobalStyle`
     }
     .default_layout {
         display: flex;
-        min-height: 1200px;
-        flex-direction: row;
+        flex-direction: column;
+        margin: 0 auto;
         justify-text: center;
+        & article {
+            max-width: 60vw;
+            margin: 0 auto;
+        }
     }
     .activeLink {
-        transform: scale(1.5)
+        transform: scale(1.3);
+        border-bottom: 1px solid black;
     }
 `;
 

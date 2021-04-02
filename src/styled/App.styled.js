@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const StyledAppContainer = styled.div`
 	position: relative;
-	border: 1px solid red;
     min-height: 100vh;
 	& .blog_title {
 		position: relative;

@@ -6,17 +6,14 @@ import Sidebar from './Sidebar';
 
 const DefaultLayout = ({ children } = {}) => {
     const { pathname } = useLocation();
+
     return (
-        <>
-            <div style={{ maxWidth: '900px', margin: '0 auto', justifyContent: 'center' }}>
-                <Header />
-                <main className="default_layout">
-                    <div>{children}</div>
-                    {pathname === '/' ? <Sidebar /> : null}
-                </main>
-            </div>
+        <main className="default_layout">
+            <Header />
+            {children}
+            {pathname === '/' ? <Sidebar /> : null}
             <Footer> footer</Footer>
-        </>
+        </main>
     );
 };
 

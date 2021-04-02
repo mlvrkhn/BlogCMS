@@ -33,18 +33,13 @@ const PostPage = ({ match }) => {
     }, [uid]);
 
     if (postData) {
-        console.log('🚀 ~ PostPage ~ postData', postData)
+        console.log('🚀 ~ PostPage ~ postData', postData);
         const dateString = Date(postData.data.date);
         const formattedDate = format(dateString, 'MMMM dd, yyyy');
 
         return (
             <DefaultLayout>
-                <article
-                    style={{
-                        margin: 'auto',
-                        justifyItems: 'center',
-                    }}
-                >
+                <article>
                     <Link to="/">
                         <img
                             rel=""
@@ -54,9 +49,13 @@ const PostPage = ({ match }) => {
                             style={{ height: '2em', marginBottom: '2em' }}
                         />
                     </Link>
-                    {RichText.render(postData.data.title, linkResolver)}
-                    {formattedDate}
-                    {console.log(postData.data.body)}
+                    <div style={{ fontSize: '2em', padding: '1em 0' }}>
+                        {RichText.render(postData.data.title, linkResolver)}
+                    </div>
+                    <div style={{ padding: '1em 0' }}>
+                        {formattedDate}
+                    </div>
+
                     <Slicer toSlice={postData.data.body} />
                 </article>
             </DefaultLayout>
