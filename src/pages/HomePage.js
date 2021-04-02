@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { NotFoundPage, LoadingPage } from './index';
-import { DefaultLayout, PostPreview } from '../components/layout/index';
+import { DefaultLayout, PostPreview, Sidebar } from '../components/layout/index';
 
 import api from '../api/PrismicAPI';
 
@@ -32,7 +32,13 @@ const HomePage = () => {
     if (blogPosts) {
         return (
             <DefaultLayout>
-                <PostPreview posts={blogPosts} />
+                <main style={{ display: 'flex' }}>
+                    <div>
+                        <PostPreview posts={blogPosts} />
+
+                    </div>
+                    <Sidebar />
+                </main>
             </DefaultLayout>
         );
     }

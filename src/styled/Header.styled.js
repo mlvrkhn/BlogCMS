@@ -5,6 +5,7 @@ const StyledHeader = styled.header`
     flex-direction: column;
     border-bottom: 1px solid black;
     margin: 3em 0;
+    max-width: 80vw;
 `;
 
 export default StyledHeader;

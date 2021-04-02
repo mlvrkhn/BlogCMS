@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
             max-width: 60vw;
             margin: 0 auto;
         }
+        & header {
+            margin: 2em auto;
+            width: 80vw;
+        }
     }
     .activeLink {
         transform: scale(1.3);
