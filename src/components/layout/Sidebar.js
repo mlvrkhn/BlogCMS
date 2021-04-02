@@ -25,18 +25,24 @@ const Sidebar = () => {
     }, []);
 
     const nav = documents.map((category, index) => {
-        console.log('🚀 ~ nav ~ category', category)
         const categoryName = category.data.category_name[0].text;
         return (
-            <RouterLink to={`/category/${category.uid}`} key={`sidebar-${index}`}>
-                {categoryName}
-            </RouterLink>
+            <ul>
+                <li>
+                    <RouterLink to={`/category/${category.uid}`} key={`sidebar-${index}`}>
+                        {categoryName}
+                    </RouterLink>
+                </li>
+            </ul>
         );
     });
 
     return (
         <StyledSidebar>
-            {nav}
+            <h2>Categories:</h2>
+            <ul>
+                { nav }
+            </ul>
         </StyledSidebar>
     );
 };
