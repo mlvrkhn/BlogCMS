@@ -4,13 +4,12 @@ import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 
-const DefaultLayout = ({ children, categories } = {}) => {
+const DefaultLayout = ({ children } = {}) => {
     const { pathname } = useLocation();
-    // maybe MetaDecorator here
     return (
         <>
-            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                <Header>header </Header>
+            <div style={{ maxWidth: '900px', margin: '0 auto', justifyContent: 'center' }}>
+                <Header />
                 <main className="default_layout">
                     <div>{children}</div>
                     {pathname === '/' ? <Sidebar /> : null}

@@ -4,11 +4,7 @@ import { useParams } from 'react-router-dom';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import PostPreview from '../components/layout/PostPreview';
 
-
-import api from '../api/PrismicAPI'
-
-// import Prismic from '@prismicio/client';
-// import { Client } from '../../prismic-config';
+import api from '../api/PrismicAPI';
 
 const CategoryPage = ({ match }) => {
     const { category } = match.params;
@@ -24,13 +20,13 @@ const CategoryPage = ({ match }) => {
             } catch (error) {
                 console.error(error);
             }
-        }
+        };
         getCategoryPosts();
     }, [category]);
 
     return (
         <DefaultLayout>
-            {`CATEGORY ${category}`}
+            <h2 className="category_header--name">{`Category ${category}`}</h2>
             <PostPreview posts={documents} />
         </DefaultLayout>
     );

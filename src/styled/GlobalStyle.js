@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: ${({ theme }) => theme.fontSize.medium};
         margin: 1em 0;
     }
-    h1 {
+    .blog_title {
         font-size: ${({ theme }) => theme.fontSize.xxlarge};
     }
     .post_preview-img {
@@ -36,8 +36,11 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         min-height: 1200px;
         flex-direction: row;
-        justify-content: space-between;
+        justify-text: center;
     }
+    /* .loading_page {
+
+    } */
 `;
 
 export default GlobalStyle;

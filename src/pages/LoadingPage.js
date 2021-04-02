@@ -2,8 +2,8 @@ import React from 'react';
 
 const LoadingPage = () => {
     return (
-        <div className="loading_page" style={{ display: 'flex' }}>
-            Loading...
+        <div className="loading_page">
+                Loading...
         </div>
     )
 }

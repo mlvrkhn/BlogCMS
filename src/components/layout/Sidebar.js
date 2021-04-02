@@ -27,13 +27,11 @@ const Sidebar = () => {
     const nav = documents.map((category, index) => {
         const categoryName = category.data.category_name[0].text;
         return (
-            <ul>
-                <li>
-                    <RouterLink to={`/category/${category.uid}`} key={`sidebar-${index}`}>
-                        {categoryName}
-                    </RouterLink>
-                </li>
-            </ul>
+            <li key={`sidebar-${index}`}>
+                <RouterLink to={`/category/${category.uid}`}>
+                    {categoryName}
+                </RouterLink>
+            </li>
         );
     });
 
