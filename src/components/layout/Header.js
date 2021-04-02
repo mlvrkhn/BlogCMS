@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import StyledNavbar from '../../styled/Navbar.styled';
 import StyledHeader from '../../styled/Header.styled';
 
@@ -15,7 +15,7 @@ const Header = () => (
             Why learn GDPR?
         </h1>
         <div style={headerStyle}>
-            <Link to="/" className="logo">
+            <NavLink to="/" className="logo">
                 <img
                     rel="shortcut icon"
                     type="icon"
@@ -23,11 +23,11 @@ const Header = () => (
                     alt="blog-logo"
                     style={{ width: '50%' }}
                 />
-            </Link>
+            </NavLink>
             <StyledNavbar>
-                <Link to="/">Home</Link>
-                <Link to="/contact">Contact</Link>
-                <Link to="/about">About</Link>
+                <NavLink activeClassName="activeLink" exact to="/">Home</NavLink>
+                <NavLink activeClassName="activeLink" exact to="/contact">Contact</NavLink>
+                <NavLink activeClassName="activeLink" exact to="/about">About</NavLink>
             </StyledNavbar>
         </div>
     </StyledHeader>

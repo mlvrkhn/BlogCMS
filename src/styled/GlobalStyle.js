@@ -38,9 +38,9 @@ const GlobalStyle = createGlobalStyle`
         flex-direction: row;
         justify-text: center;
     }
-    /* .loading_page {
-
-    } */
+    .activeLink {
+        transform: scale(1.5)
+    }
 `;
 
 export default GlobalStyle;
