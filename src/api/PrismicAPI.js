@@ -9,7 +9,6 @@ class PrismicAPI {
 		const posts = await Client.query(
 			Prismic.Predicates.at('document.type', 'blog-post'),
 		);
-        console.log('🚀 ~ getAllPosts ~ posts', posts)
 		return posts.results;
 	}
 
@@ -30,7 +29,6 @@ class PrismicAPI {
 		const postsByCategory = await Client.query(
 			Prismic.Predicates.at('my.blog-post.category_group.category', id),
 		);
-        console.log('🚀 postsByCategory', postsByCategory.results);
         return postsByCategory.results;
 	}
 }

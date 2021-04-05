@@ -27,7 +27,9 @@ const CategoryPage = ({ match }) => {
     return (
         <DefaultLayout>
             <h2 className="category_header--name">{`Category ${category}`}</h2>
-            <PostPreview posts={documents} />
+            {documents.map(post => {
+                return <PostPreview {...post} key={post.uid} />
+            })}
         </DefaultLayout>
     );
 };

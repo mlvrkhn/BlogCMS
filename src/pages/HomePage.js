@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { NotFoundPage, LoadingPage } from './index';
-import { DefaultLayout, PostPreview, Sidebar, Pagination } from '../components/layout/index';
+import {
+    DefaultLayout, PostPreview, Sidebar, Pagination,
+} from '../components/layout/index';
 
 import api from '../api/PrismicAPI';
 
@@ -32,10 +34,18 @@ const HomePage = () => {
     if (blogPosts) {
         return (
             <DefaultLayout>
-                <main style={{ display: 'flex', maxWidth: '900px', margin: '0 auto'}}>
-                    {/* <Pagination> */}
-                        <PostPreview posts={blogPosts} />
-                    {/* </Pagination> */}
+                <main
+                    style={{
+                        display: 'flex',
+                        maxWidth: '900px',
+                        margin: '0 auto',
+                    }}
+                >
+                    <Pagination>
+                        {blogPosts.map((post) => (
+                            <PostPreview {...post} key={post.uid} />
+                        ))}
+                    </Pagination>
                     <Sidebar />
                 </main>
             </DefaultLayout>
