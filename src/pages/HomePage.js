@@ -35,11 +35,7 @@ const HomePage = () => {
         return (
             <DefaultLayout>
                 <main
-                    style={{
-                        display: 'flex',
-                        maxWidth: '900px',
-                        margin: '0 auto',
-                    }}
+                    className="main-container"
                 >
                     <Pagination
                         posts={blogPosts}

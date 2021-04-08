@@ -4,11 +4,14 @@ import {
     Link, Switch, Route, Redirect, useParams,
 } from 'react-router-dom';
 
+import Sidebar from './Sidebar';
+
 const Pagination = (props) => {
     const { page = 1 } = useParams();
     const {
-        children, path = '/', limit = 5,
+        children, path, limit = 5,
     } = props;
+    console.log('🚀 ~ Pagination ~ path', path)
 
     const begin = limit * (page - 1);
     const end = limit * page;
@@ -21,16 +24,14 @@ const Pagination = (props) => {
         </li>
     ));
 
-    page === 0 && children;
-
-    return (
-        <div>
-            {children.slice(begin, end)}
-            <ul className="pagination-links--container">
-                {links}
-            </ul>
-        </div>
-    );
+    if (path !== undefined) {
+        return (
+            <div>
+                {children.slice(begin, end)}
+                <ul className="pagination-links--container">{links}</ul>
+            </div>
+        );
+    }
 };
 
 export default Pagination;

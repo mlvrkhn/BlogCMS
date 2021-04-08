@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-import DefaultLayout from '../components/layout/DefaultLayout';
-import PostPreview from '../components/layout/PostPreview';
+import { DefaultLayout, PostPreview, Pagination, Sidebar } from '../components/layout/index';
 
 import api from '../api/PrismicAPI';
 
@@ -26,10 +24,13 @@ const CategoryPage = ({ match }) => {
 
     return (
         <DefaultLayout>
-            <h2 className="category_header--name">{`Category ${category}`}</h2>
-            {documents.map(post => {
-                return <PostPreview {...post} key={post.uid} />
-            })}
+            <h2 className="category-header--name">{category.toUpperCase()}</h2>
+            <main className="main-container">
+                <Pagination path={`/category/${category}/`} limit={2}>
+                    {documents.map((post) => <PostPreview {...post} key={post.uid} />)}
+                </Pagination>
+                <Sidebar />
+            </main>
         </DefaultLayout>
     );
 };

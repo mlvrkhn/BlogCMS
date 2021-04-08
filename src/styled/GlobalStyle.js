@@ -57,10 +57,22 @@ const GlobalStyle = createGlobalStyle`
         textAlign: center;
         display: flex;
         list-style-type: none;
+        transform: translateX(10%);
         & li {
             margin: 0 1em;
         }
-
+    }
+    .category-header--name {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+        font-size: ${({ theme }) => theme.fontSize.large};
+    }
+    .main-container {
+        display: flex;
+        max-width: 800px;
+        min-height: 100vh;
+        margin: 0 auto;
     }
 `;
 
