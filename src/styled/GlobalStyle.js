@@ -51,6 +51,17 @@ const GlobalStyle = createGlobalStyle`
         transform: scale(1.3);
         border-bottom: 1px solid black;
     }
+    .pagination-links--container {
+        justify-content: center;
+        padding: 2em;
+        textAlign: center;
+        display: flex;
+        list-style-type: none;
+        & li {
+            margin: 0 1em;
+        }
+
+    }
 `;
 
 export default GlobalStyle;

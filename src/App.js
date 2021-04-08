@@ -22,9 +22,9 @@ import GlobalStyle from './styled/GlobalStyle';
 const App = () => {
     const routes = (
         <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/:page?" component={HomePage} />
             <Route exact path="/post/:uid" component={PostPage} />
-            <Route exact path="/category/:category" component={CategoryPage} />
+            <Route exact path="/category/:category/" component={CategoryPage} />
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/about" component={AboutPage} />
             <Route component={NotFoundPage} />

@@ -41,7 +41,11 @@ const HomePage = () => {
                         margin: '0 auto',
                     }}
                 >
-                    <Pagination>
+                    <Pagination
+                        posts={blogPosts}
+                        path="/"
+                        limit={2}
+                    >
                         {blogPosts.map((post) => (
                             <PostPreview {...post} key={post.uid} />
                         ))}

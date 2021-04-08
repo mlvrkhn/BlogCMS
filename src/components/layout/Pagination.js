@@ -1,13 +1,36 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import {
+    Link, Switch, Route, Redirect, useParams,
+} from 'react-router-dom';
 
-const Pagination = props => {
-    const limit = 3;
-    const page = 1;
+const Pagination = (props) => {
+    const { page = 1 } = useParams();
+    const {
+        children, path = '/', limit = 5,
+    } = props;
+
     const begin = limit * (page - 1);
     const end = limit * page;
 
-    return (<div>{props.children.slice(begin, end)}</div>);
+    const pagesTotal = Math.ceil(children.length / limit);
+
+    const links = new Array(pagesTotal).fill(0).map((link, index) => (
+        <li key={index}>
+            <Link to={`${path}${index + 1}`}>{index + 1}</Link>
+        </li>
+    ));
+
+    page === 0 && children;
+
+    return (
+        <div>
+            {children.slice(begin, end)}
+            <ul className="pagination-links--container">
+                {links}
+            </ul>
+        </div>
+    );
 };
 
 export default Pagination;
