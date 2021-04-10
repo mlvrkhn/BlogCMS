@@ -11,8 +11,6 @@ const Pagination = (props) => {
     const {
         children, path, limit = 5,
     } = props;
-    console.log('🚀 ~ Pagination ~ path', path)
-
     const begin = limit * (page - 1);
     const end = limit * page;
 

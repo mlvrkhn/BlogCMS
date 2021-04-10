@@ -7,7 +7,8 @@ import {
 
 import api from '../api/PrismicAPI';
 
-const HomePage = () => {
+const HomePage = ({match}) => {
+console.log('🚀 ~ HomePage ~ match', match.params.page)
     const [blogPosts, setBlogPosts] = useState(null);
     const [notFound, toggleNotFound] = useState(false);
     const [pending, togglePending] = useState(false);

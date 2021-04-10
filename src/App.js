@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    HashRouter as Router, Route, Switch, Redirect
+    BrowserRouter as Router, Route, Switch, Redirect
 } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
@@ -23,11 +23,11 @@ const App = () => {
     const routes = (
         <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/:page" component={HomePage} />
-            <Route exact path="/post/:uid" component={PostPage} />
-            <Route exact path="/contact" component={ContactPage} />
-            <Route exact path="/category/:category/:page?" component={CategoryPage} />
-            <Route exact path="/about" component={AboutPage} />
+            <Route path="/contact" component={ContactPage} />
+            <Route path="/post/:uid" component={PostPage} />
+            <Route path="/category/:category/:page?" component={CategoryPage} />
+            <Route path="/about" component={AboutPage} />
+            <Route path="/:page?" component={HomePage} />
             <Route component={NotFoundPage} />
         </Switch>
     );
