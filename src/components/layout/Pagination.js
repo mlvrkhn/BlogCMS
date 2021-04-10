@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-    Link, Switch, Route, Redirect, useParams,
+    Link, useParams,
 } from 'react-router-dom';
-
-import Sidebar from './Sidebar';
 
 const Pagination = (props) => {
     const { page = 1 } = useParams();
@@ -22,14 +20,12 @@ const Pagination = (props) => {
         </li>
     ));
 
-    if (path !== undefined) {
-        return (
-            <div>
-                {children.slice(begin, end)}
-                <ul className="pagination-links--container">{links}</ul>
-            </div>
-        );
-    }
+    return (
+        <div>
+            {children.slice(begin, end)}
+            <ul className="pagination-links--container">{links}</ul>
+        </div>
+    );
 };
 
 export default Pagination;

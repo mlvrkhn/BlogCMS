@@ -1,4 +1,5 @@
 import React from 'react';
+import MetaDecorator from '../MetaDecorator';
 
 function NotFoundPage() {
     return (

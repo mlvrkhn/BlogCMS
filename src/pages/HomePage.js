@@ -7,8 +7,7 @@ import {
 
 import api from '../api/PrismicAPI';
 
-const HomePage = ({match}) => {
-console.log('🚀 ~ HomePage ~ match', match.params.page)
+const HomePage = () => {
     const [blogPosts, setBlogPosts] = useState(null);
     const [notFound, toggleNotFound] = useState(false);
     const [pending, togglePending] = useState(false);
@@ -40,7 +39,7 @@ console.log('🚀 ~ HomePage ~ match', match.params.page)
                 >
                     <Pagination
                         posts={blogPosts}
-                        path="/"
+                        path="/home/"
                         limit={2}
                     >
                         {blogPosts.map((post) => (
