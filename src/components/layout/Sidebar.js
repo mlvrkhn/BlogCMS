@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { Date, RichText, Text } from 'prismic-reactjs';
-import StyledSidebar from '../../styled/Sidebar.styled';
-import { linkResolver } from '../../../prismic-config';
-
 import api from '../../api/PrismicAPI';
+
+import StyledSidebar from '../../styled/Sidebar.styled';
 
 const Sidebar = () => {
     const [documents, setDocuments] = useState([]);

@@ -68,12 +68,6 @@ const GlobalStyle = createGlobalStyle`
         padding: 2em;
         font-size: ${({ theme }) => theme.fontSize.large};
     }
-    .main-container {
-        display: flex;
-        max-width: 800px;
-        min-height: 100vh;
-        margin: 0 auto;
-    }
     .contact_form {
         display: flex;
         flex-direction: column;
@@ -87,6 +81,27 @@ const GlobalStyle = createGlobalStyle`
     }
     .about-container > * {
         margin: 1em 0;
+    }
+    .go-back-arrow {
+        height: 2em;
+    }
+    .article-title {
+        font-size: ${({ theme }) => theme.fontSize.xxlarge};
+        padding: 1em 0;
+    }
+    .article-timestamp {
+        padding: 1em 0;
+    }
+    .footer-link {
+        color: ${({ theme }) => theme.colors.bright};
+    }
+    .header-container {
+        display: flex;
+        flexDirection: row;
+        margin: 1em 0;
+    }
+    .header-logo {
+        height: 50%;
     }
 `;
 

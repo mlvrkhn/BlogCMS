@@ -1,20 +1,17 @@
 import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
-import MetaDecorator from '../MetaDecorator';
+import StyledContainer from '../styled/Container.styled';
 
 function NotFoundPage() {
-
     return (
         <DefaultLayout>
-            <main
-                className="main-container"
-            >
+            <StyledContainer>
                 <div>
                     404: this page does not exist.
                 </div>
-            </main>
+            </StyledContainer>
         </DefaultLayout>
-    )
+    );
 }
 
 export default NotFoundPage;

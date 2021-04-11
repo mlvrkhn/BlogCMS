@@ -3,6 +3,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { format } from 'date-fns-tz';
+
 import { Date, RichText, Text } from 'prismic-reactjs';
 import { linkResolver } from '../../../prismic-config';
 

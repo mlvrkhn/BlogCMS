@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 
 import { NotFoundPage, LoadingPage } from './index';
 import {
     DefaultLayout, PostPreview, Sidebar, Pagination,
 } from '../components/layout/index';
+
+import StyledContainer from '../styled/Container.styled';
 
 import api from '../api/PrismicAPI';
 
@@ -33,10 +36,10 @@ const HomePage = () => {
 
     if (blogPosts) {
         return (
-            <DefaultLayout>
-                <main
-                    className="main-container"
-                >
+            <DefaultLayout
+                title="GDPR blog"
+            >
+                <StyledContainer>
                     <Pagination
                         posts={blogPosts}
                         path="/home/"
@@ -47,7 +50,7 @@ const HomePage = () => {
                         ))}
                     </Pagination>
                     <Sidebar />
-                </main>
+                </StyledContainer>
             </DefaultLayout>
         );
     }

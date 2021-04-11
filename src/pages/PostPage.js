@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { RichText, Date } from 'prismic-reactjs';
+import PropTypes from 'prop-types';
+
 import { format } from 'date-fns-tz';
 import { Link } from 'react-router-dom';
-import DefaultLayout from '../components/layout/DefaultLayout';
+
+import { RichText, Date } from 'prismic-reactjs';
 import { Client, linkResolver } from '../../prismic-config';
 
+import DefaultLayout from '../components/layout/DefaultLayout';
 import NotFoundPage from './NotFoundPage';
 import Slicer from '../components/slices/Slicer';
 
@@ -34,35 +37,43 @@ const PostPage = ({ match }) => {
     if (postData) {
         const dateString = Date(postData.data.date);
         const formattedDate = format(dateString, 'MMMM dd, yyyy');
+        const title = RichText.asText(postData.data.title);
+        const article = (
+            <article>
+                <Link to="/">
+                    <img
+                        className="go-back-arrow"
+                        type="icon"
+                        alt="go-back-arrow"
+                        src="../../public/assets/arrow-left.svg"
+                    />
+                </Link>
+                <div className="article-timestamp">{formattedDate}</div>
+                <div className="article-title">
+                    {RichText.render(postData.data.title, linkResolver)}
+                </div>
+                <Slicer toSlice={postData.data.body} />
+            </article>
+        );
 
         return (
             <DefaultLayout
-                title={RichText.asText(postData.data.title)}
+                title={title}
             >
-                <article>
-                    <Link to="/">
-                        <img
-                            rel=""
-                            type="icon"
-                            alt="go-back-arrow"
-                            src="../../public/assets/arrow-left.svg"
-                            style={{ height: '2em', marginBottom: '2em' }}
-                        />
-                    </Link>
-                    <div style={{ fontSize: '2em', padding: '1em 0' }}>
-                        {RichText.render(postData.data.title, linkResolver)}
-                    </div>
-                    <div style={{ padding: '1em 0' }}>
-                        {formattedDate}
-                    </div>
-                    <Slicer toSlice={postData.data.body} />
-                </article>
+                { article }
             </DefaultLayout>
         );
-    } if (notFound) {
-        return <NotFoundPage />;
     }
+    if (notFound) return <NotFoundPage />;
     return null;
 };
 
 export default PostPage;
+
+PostPage.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            uid: PropTypes.string,
+        }),
+    }).isRequired,
+};

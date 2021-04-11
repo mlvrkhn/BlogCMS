@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import {
     DefaultLayout, PostPreview, Pagination, Sidebar,
 } from '../components/layout/index';
 
-import NotFoundPage from './index';
-
 import api from '../api/PrismicAPI';
 
 const CategoryPage = ({ match }) => {
-    const { category, page } = match.params;
+    const { category } = match.params;
     const [documents, setDocuments] = useState([]);
 
     useEffect(() => {
@@ -24,9 +23,7 @@ const CategoryPage = ({ match }) => {
             }
         };
         getCategoryPosts();
-    }, [category]);
-
-    // const title = category.map(p => console.log(p));
+    }, []);
 
     return (
         <DefaultLayout title={category}>
@@ -44,3 +41,11 @@ const CategoryPage = ({ match }) => {
 };
 
 export default CategoryPage;
+
+CategoryPage.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            category: PropTypes.string,
+        }),
+    }).isRequired,
+};
