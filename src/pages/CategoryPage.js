@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-import { DefaultLayout, PostPreview, Pagination, Sidebar } from '../components/layout/index';
+import {
+    DefaultLayout, PostPreview, Pagination, Sidebar,
+} from '../components/layout/index';
+
+import NotFoundPage from './index';
 
 import api from '../api/PrismicAPI';
 
 const CategoryPage = ({ match }) => {
-    const { category } = match.params;
+    const { category, page } = match.params;
     const [documents, setDocuments] = useState([]);
 
     useEffect(() => {
@@ -22,12 +26,16 @@ const CategoryPage = ({ match }) => {
         getCategoryPosts();
     }, [category]);
 
+    // const title = category.map(p => console.log(p));
+
     return (
-        <DefaultLayout>
+        <DefaultLayout title={category}>
             <h2 className="category-header--name">{category.toUpperCase()}</h2>
             <main className="main-container">
                 <Pagination path={`/category/${category}/`} limit={2}>
-                    {documents.map((post) => <PostPreview {...post} key={post.uid} />)}
+                    {documents.map((post) => (
+                        <PostPreview {...post} key={post.uid} />
+                    ))}
                 </Pagination>
                 <Sidebar />
             </main>

@@ -74,6 +74,20 @@ const GlobalStyle = createGlobalStyle`
         min-height: 100vh;
         margin: 0 auto;
     }
+    .contact_form {
+        display: flex;
+        flex-direction: column;
+        & > * {
+            width: 30vw;
+            height: 2em;
+        }
+        & > textarea {
+            height: 200px;
+        }
+    }
+    .about-container > * {
+        margin: 1em 0;
+    }
 `;
 
 export default GlobalStyle;

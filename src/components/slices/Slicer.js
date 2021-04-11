@@ -3,7 +3,6 @@ import Text from './Text';
 import Image from './Image';
 
 const Slicer = ({ toSlice }) => {
-    console.log('slicer on');
     return (
         <div className="container">
             {toSlice.map((slice, index) => {

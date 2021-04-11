@@ -3,12 +3,15 @@ import React from 'react';
 import {
     Link, useParams,
 } from 'react-router-dom';
+import NotFoundPage from '../../pages/index';
 
 const Pagination = (props) => {
     const { page = 1 } = useParams();
     const {
-        children, path, limit = 5,
+        children, path, limit = 5, posts
     } = props;
+    console.log('🚀 ~ Pagination ~ posts', posts)
+    
     const begin = limit * (page - 1);
     const end = limit * page;
 
@@ -20,6 +23,7 @@ const Pagination = (props) => {
         </li>
     ));
 
+    if (page > pagesTotal) return null;
     return (
         <div>
             {children.slice(begin, end)}

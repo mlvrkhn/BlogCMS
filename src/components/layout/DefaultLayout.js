@@ -4,12 +4,13 @@ import Header from './Header';
 import Footer from './Footer';
 import MetaDecorator from '../../MetaDecorator';
 
-const DefaultLayout = ({ children } = {}) => {
+const DefaultLayout = (props) => {
+    const { children = {}, title } = props;
     const { pathname } = useLocation();
-
 
     return (
         <div className="default_layout">
+            <MetaDecorator title={title} />
             <Header />
             {children}
             <Footer> footer</Footer>

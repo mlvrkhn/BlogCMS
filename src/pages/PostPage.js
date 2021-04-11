@@ -36,7 +36,9 @@ const PostPage = ({ match }) => {
         const formattedDate = format(dateString, 'MMMM dd, yyyy');
 
         return (
-            <DefaultLayout>
+            <DefaultLayout
+                title={RichText.asText(postData.data.title)}
+            >
                 <article>
                     <Link to="/">
                         <img

@@ -1,15 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-function MetaDecorator({ title = 'GDPR', description = 'DESC' }) {
-    // console.log('🚀 ~ MetaDecorator ~ props', name);
-    
-    return (
-        <Helmet>
-            <title>{title}</title>
-            <meta name={title} content={description} />
-        </Helmet>
-    );
-}
+const MetaDecorator = ({ title = 'GDPR', description = 'DESC' }) => (
+    <Helmet>
+        <title>{title}</title>
+    </Helmet>
+);
 
 export default MetaDecorator;

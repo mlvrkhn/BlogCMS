@@ -15,18 +15,46 @@ const ContactPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-		setFormData(initial);
+        setFormData(initial);
+        // handle email here
     };
 
     return (
-        <DefaultLayout>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <input name="name" type="text" value={formData.name} onChange={(e) => handleChange(e.target)} />
-                <input name="message" type="text" value={formData.message} onChange={(e) => handleChange(e.target)} />
-                <input name="email" type="email" value={formData.email} onChange={(e) => handleChange(e.target)} />
-                <button type="submit">SUBMIT</button>
-            </form>
+        <DefaultLayout
+            title="Contact"
+        >
+            <main
+                className="main-container"
+            >
+                <form
+                    className="contact_form"
+                    onSubmit={(e) => handleSubmit(e)}
+                >
+                    <h2>Drop me an email (:</h2>
+                    <input
+                        name="name"
+                        type="text"
+                        value={formData.name}
+                        onChange={(e) => handleChange(e.target)}
+                        placeholder="Your full name"
+                    />
+                    <textarea
+                        name="message"
+                        type="text"
+                        value={formData.message}
+                        onChange={(e) => handleChange(e.target)}
+                        placeholder="Your Message"
+                    />
+                    <input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleChange(e.target)}
+                        placeholder="Your e-mail"
+                    />
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </main>
         </DefaultLayout>
     );
 };
