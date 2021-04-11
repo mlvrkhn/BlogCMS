@@ -1,11 +1,13 @@
 import React from 'react';
 import DefaultLayout from '../components/layout/DefaultLayout';
+import StyledContainer from '../styled/Container.styled';
+
 
 const AboutPage = () => (
     <DefaultLayout
         title="About"
     >
-        <main className="main-container">
+        <StyledContainer>
             <div className="about-container">
                 <h2>About</h2>
                 <h3>This blog is build with:</h3>
@@ -14,7 +16,7 @@ const AboutPage = () => (
                     <li>Routing: React Router.</li>
                 </ul>
             </div>
-        </main>
+        </StyledContainer>
     </DefaultLayout>
 );
 
