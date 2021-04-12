@@ -5,10 +5,12 @@ import {
     DefaultLayout, PostPreview, Pagination, Sidebar,
 } from '../components/layout/index';
 
+import StyledContainer from '../styled/Container.styled';
+
 import api from '../api/PrismicAPI';
 
 const CategoryPage = ({ match }) => {
-    const { category } = match.params;
+    const { category, page } = match.params;
     const [documents, setDocuments] = useState([]);
 
     useEffect(() => {
@@ -23,19 +25,22 @@ const CategoryPage = ({ match }) => {
             }
         };
         getCategoryPosts();
-    }, []);
+        return () => {
+            setDocuments([]);
+        };
+    }, [category]);
 
     return (
         <DefaultLayout title={category}>
             <h2 className="category-header--name">{category.toUpperCase()}</h2>
-            <main className="main-container">
-                <Pagination path={`/category/${category}/`} limit={2}>
+            <StyledContainer>
+                <Pagination path={`/category/${category}/`} limit={2} page={page}>
                     {documents.map((post) => (
                         <PostPreview {...post} key={post.uid} />
                     ))}
                 </Pagination>
                 <Sidebar />
-            </main>
+            </StyledContainer>
         </DefaultLayout>
     );
 };

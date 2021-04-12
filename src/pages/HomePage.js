@@ -33,8 +33,8 @@ const HomePage = () => {
         };
         fetchPosts();
         return () => {
-			setBlogPosts(null);
-		};
+            setBlogPosts(null);
+        };
     }, []);
 
     if (blogPosts) {

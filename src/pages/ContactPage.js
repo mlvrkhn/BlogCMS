@@ -17,12 +17,12 @@ const ContactPage = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const sendEmail = async (email) => {
+    const sendEmail = async () => {
         const successMsg = 'Your message has been successfully sent';
         const errorMsg = 'Your message has not been sent';
 
         const serverResp = await emailjs
-            .send(serviceID, templateID, email, userID)
+            .send(serviceID, templateID, formData, userID)
             .then(
                 (res) => {
                     if (res.status === 200) {
@@ -40,14 +40,9 @@ const ContactPage = () => {
         return serverResp;
     };
 
-    const handleEmail = async () => {
-        const email = formData;
-        const respond = await sendEmail(email);
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleEmail();
+        sendEmail();
         setFormData(initial);
     };
 
@@ -65,7 +60,6 @@ const ContactPage = () => {
                     />
                     <textarea
                         name="message"
-                        type="text"
                         value={formData.message}
                         onChange={(e) => handleChange(e.target)}
                         placeholder="Your Message"
