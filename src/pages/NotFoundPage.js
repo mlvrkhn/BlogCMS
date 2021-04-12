@@ -4,7 +4,9 @@ import StyledContainer from '../styled/Container.styled';
 
 function NotFoundPage() {
     return (
-        <DefaultLayout>
+        <DefaultLayout
+            title="Not Found"
+        >
             <StyledContainer>
                 <div>
                     404: this page does not exist.

@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-    Link, useParams,
+    Link, useParams, Redirect,
 } from 'react-router-dom';
-import NotFoundPage from '../../pages/index';
+// import NotFoundPage from '../../pages/index';
 
 const Pagination = (props) => {
     const { page = 1 } = useParams();
-    const { children, path, limit = 5, } = props;
+    const { children, path, limit = 5 } = props;
 
     const begin = limit * (page - 1);
     const end = limit * page;
@@ -20,7 +20,9 @@ const Pagination = (props) => {
         </li>
     ));
 
-    if (page > pagesTotal) return null;
+    const pageExist = Number(page) <= pagesTotal;
+
+    if (!pageExist) return <Redirect to="/not-found" />;
     return (
         <div>
             {children.slice(begin, end)}

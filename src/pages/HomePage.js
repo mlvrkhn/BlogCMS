@@ -32,6 +32,9 @@ const HomePage = () => {
             togglePending(false);
         };
         fetchPosts();
+        return () => {
+			setBlogPosts(null);
+		};
     }, []);
 
     if (blogPosts) {

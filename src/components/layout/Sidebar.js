@@ -20,6 +20,9 @@ const Sidebar = () => {
             }
         };
         fetchCategories();
+        return () => {
+            setDocuments([]);
+        };
     }, []);
 
     const nav = documents.map((category, index) => {

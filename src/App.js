@@ -25,9 +25,13 @@ const App = () => {
             <Route path="/home/:page?" component={HomePage} />
             <Route path="/contact" component={ContactPage} />
             <Route path="/post/:uid" component={PostPage} />
-            <Route path="/category/:category?/:page?" component={CategoryPage} />
+            <Route
+                path="/category/:category?/:page?"
+                component={CategoryPage}
+            />
             <Route path="/about" component={AboutPage} />
-            <Route component={NotFoundPage} />
+            <Route path="/not-found" component={NotFoundPage} />
+            <Redirect to="/not-found" />
         </Switch>
     );
 

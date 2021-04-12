@@ -25,7 +25,6 @@ const ContactPage = () => {
             .send(serviceID, templateID, email, userID)
             .then(
                 (res) => {
-                    console.log('🚀 ~ sendEmail ~ res', res.status);
                     if (res.status === 200) {
                         Swal.fire(successMsg);
                         return Promise.resolve(successMsg);
@@ -44,7 +43,6 @@ const ContactPage = () => {
     const handleEmail = async () => {
         const email = formData;
         const respond = await sendEmail(email);
-        console.log('respond', respond);
     };
 
     const handleSubmit = (e) => {
