@@ -2,9 +2,9 @@
 
 prismic-config.js
 account.js
+/node_modules
 
 # dependencies
-/node_modules
 /.pnp
 .pnp.js
 
