@@ -2,8 +2,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { moment } from 'moment';
-
 import { Date, RichText } from 'prismic-reactjs';
 import { linkResolver } from '../../../prismic-config';
 
@@ -13,10 +11,10 @@ const PostPreview = (post) => {
     const { data, uid } = post;
     const dateString = Date(data.date);
     const formattedDate = Intl.DateTimeFormat('en-US', {
-		year: 'numeric',
-		month: 'short',
-		day: '2-digit',
-	}).format(dateString);
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+    }).format(dateString);
 
     const postImage = data.body.map((p) => {
         if (p.slice_type === 'post_image') {
@@ -26,18 +24,18 @@ const PostPreview = (post) => {
     });
 
     return (
-		<StyledPostPreview>
-			<div>
-				<span>{formattedDate}</span>
-				<span>{`author: ${data.author}`}</span>
-			</div>
-			<RouterLink to={`/post/${uid}`}>
-				{RichText.render(data.title, linkResolver)}
-				{RichText.render(data.post_intro, linkResolver)}
-				{postImage}
-			</RouterLink>
-		</StyledPostPreview>
-	);
+        <StyledPostPreview>
+            <div>
+                <span>{formattedDate}</span>
+                <span>{`author: ${data.author}`}</span>
+            </div>
+            <RouterLink to={`/post/${uid}`}>
+                {RichText.render(data.title, linkResolver)}
+                {RichText.render(data.post_intro, linkResolver)}
+                {postImage}
+            </RouterLink>
+        </StyledPostPreview>
+    );
 };
 
 export default PostPreview;
