@@ -5,10 +5,19 @@ import Prismic from '@prismicio/client';
 import { Client } from '../../prismic-config';
 
 class PrismicAPI {
-	async getAllPosts() {
+	async getPostsLength() {
+		const posts = await Client.query(
+			Prismic.Predicates.at('document.type', 'blog-post')
+		);
+		return posts.results.length;
+	}
+
+	async getPaginatedPosts(page) {
 		const posts = await Client.query(
 			Prismic.Predicates.at('document.type', 'blog-post'),
+			{ pageSize: 2, page },
 		);
+		console.log(posts);
 		return posts.results;
 	}
 
@@ -19,17 +28,17 @@ class PrismicAPI {
 		return categories.results;
 	}
 
-    async getID(uid) {
-        const cat = await Client.getByUID('category', uid);
-        return cat.id;
-    }
+	async getID(uid) {
+		const cat = await Client.getByUID('category', uid);
+		return cat.id;
+	}
 
 	async getPostsByCategory(category) {
-        const id = await this.getID(category);
+		const id = await this.getID(category);
 		const postsByCategory = await Client.query(
 			Prismic.Predicates.at('my.blog-post.category_group.category', id),
 		);
-        return postsByCategory.results;
+		return postsByCategory.results;
 	}
 }
 
