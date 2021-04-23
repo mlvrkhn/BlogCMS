@@ -33,7 +33,7 @@ const CategoryPage = ({ match }) => {
             setDocuments([]);
         };
     }, [category]);
-    
+
     if (pending) return <LoadingPage />;
 
     return (

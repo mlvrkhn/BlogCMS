@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
-import Swal from 'sweetalert2';
-import { userID, templateID, serviceID } from '../data/account';
+import React, { useState, useCallback } from 'react';
+
+
 import DefaultLayout from '../components/layout/DefaultLayout';
 import StyledContainer from '../styled/Container.styled';
+import useSendEmail from '../hooks/useSendEmail';
+import Swal from 'sweetalert2';
 
 const ContactPage = () => {
     const initial = {
@@ -16,35 +17,12 @@ const ContactPage = () => {
     const handleChange = ({ name, value }) => {
         setFormData({ ...formData, [name]: value });
     };
-
-    const sendEmail = async () => {
-        const successMsg = 'Your message has been successfully sent';
-        const errorMsg = 'Your message has not been sent';
-
-        const serverResp = await emailjs
-            .send(serviceID, templateID, formData, userID)
-            .then(
-                (res) => {
-                    if (res.status === 200) {
-                        Swal.fire(successMsg);
-                        return Promise.resolve(successMsg);
-                    } if (res.status !== 200) {
-                        Swal.fire(errorMsg);
-                        return Promise.reject(successMsg);
-                    }
-                },
-                (err) => {
-                    console.log(err);
-                },
-            );
-        return serverResp;
-    };
-
-    const handleSubmit = (e) => {
+    
+    const handleSubmit = useCallback((e) => {
         e.preventDefault();
-        sendEmail();
-        setFormData(initial);
-    };
+        const [emailStatus] = useSendEmail(formData);
+        setFormData(formData);
+    });
 
     return (
         <DefaultLayout title="Contact">
