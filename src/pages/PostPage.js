@@ -8,15 +8,18 @@ import { Client, linkResolver } from '../../prismic-config';
 
 import DefaultLayout from '../components/layout/DefaultLayout';
 import NotFoundPage from './NotFoundPage';
+import LoadingPage from './LoadingPage';
 import Slicer from '../components/slices/Slicer';
 
 const PostPage = ({ match }) => {
     const { uid } = match.params;
     const [postData, setPostData] = useState(null);
+    const [pending, togglePending] = useState(false);
     const [notFound, toggleNotFound] = useState(false);
 
     useEffect(() => {
         const fetchPostData = async () => {
+            togglePending(true);
             try {
                 const blogPost = await Client.getByUID('blog-post', uid);
                 if (blogPost) {
@@ -29,6 +32,7 @@ const PostPage = ({ match }) => {
                 console.error(error);
                 toggleNotFound(true);
             }
+            togglePending(false);
         };
         fetchPostData();
     }, [uid]);
@@ -67,6 +71,7 @@ const PostPage = ({ match }) => {
             </DefaultLayout>
         );
     }
+    if (pending) return <LoadingPage />;
     if (notFound) return <NotFoundPage />;
     return null;
 };
