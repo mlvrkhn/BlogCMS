@@ -25,15 +25,13 @@ const Sidebar = () => {
         };
     }, []);
 
-    const nav = documents.map((category, index) => {
-        const categoryName = category.data.category_name[0].text;
+    const nav = documents.map((cat, index) => {
+        const { text } = cat.data.category_name[0];
         return (
-            <li key={`sidebar-${index}`}>
-                <RouterLink to={`/category/${category.uid}`}>
-                    {categoryName}
-                </RouterLink>
-            </li>
-        );
+			<li key={`sidebar-${index}`}>
+				<RouterLink to={`/category/${cat.uid}`}>{text}</RouterLink>
+			</li>
+		);
     });
 
     return (
