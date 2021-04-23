@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import Text from './Text';
 import Image from './Image';
 
+import StyledSlicer from '../../styled/Slicer.styled';
+
 const Slicer = ({ toSlice }) => (
-    <div className="container">
+    <StyledSlicer>
         {toSlice.map((slice, index) => {
             const type = slice.slice_type;
 
@@ -18,13 +20,15 @@ const Slicer = ({ toSlice }) => (
                 return null;
             }
         })}
-    </div>
+    </StyledSlicer>
 );
 
 export default Slicer;
 
 Slicer.propTypes = {
-    toSlice: PropTypes.arrayOf(PropTypes.shape({
-        slice_type: PropTypes.string,
-    })).isRequired,
+    toSlice: PropTypes.arrayOf(
+        PropTypes.shape({
+            slice_type: PropTypes.string,
+        }),
+    ).isRequired,
 };
