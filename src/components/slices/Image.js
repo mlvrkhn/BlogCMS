@@ -7,7 +7,7 @@ const Image = ({ slice }) => {
         : 'text-section';
     const { url, alt } = slice.primary.post_image;
 
-    return <img style={{ width: '100%' }} src={url} alt={alt} className={sectionClass} />;
+    return <img src={url} alt={alt} className={sectionClass} />;
 };
 
 export default Image;

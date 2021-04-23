@@ -47,6 +47,11 @@ const GlobalStyle = createGlobalStyle`
             width: 80vw;
         }
     }
+    .container {
+        & > img {
+            width: 100%;
+        }
+    }
     .activeLink {
         transform: scale(1.3);
         border-bottom: 1px solid black;
