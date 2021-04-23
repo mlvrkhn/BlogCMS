@@ -6,6 +6,7 @@
 		"react/jsx-indent": ["warn", 4],
 		"react/jsx-indent-props": ["warn", 4],
 		"react/no-array-index-key": [0],
+		"camelcase": [2, {"ignoreDestructuring": true}],
 		"no-tabs": [0],
 	},
 	"globals": {

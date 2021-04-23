@@ -10,7 +10,7 @@ import StyledContainer from '../styled/Container.styled';
 import api from '../api/PrismicAPI';
 
 const CategoryPage = ({ match }) => {
-    const { category, page } = match.params;
+    const { category, page = 1 } = match.params;
     const [documents, setDocuments] = useState([]);
 
     useEffect(() => {
@@ -34,10 +34,13 @@ const CategoryPage = ({ match }) => {
         <DefaultLayout title={category}>
             <h2 className="category-header--name">{category.toUpperCase()}</h2>
             <StyledContainer>
-                <Pagination path={`/category/${category}/`} limit={2} page={page}>
-                    {documents.map((post) => (
-                        <PostPreview {...post} key={post.uid} />
-                    ))}
+                <Pagination
+                    path={`/category/${category}/`}
+                    limit={5}
+                    page={page}
+                    postsTotal={documents.length}
+                >
+                    {documents.map((post) => <PostPreview {...post} key={post.uid} />)}
                 </Pagination>
                 <Sidebar />
             </StyledContainer>

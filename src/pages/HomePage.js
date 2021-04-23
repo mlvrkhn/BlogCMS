@@ -18,29 +18,28 @@ const HomePage = ({ match }) => {
     const [postsTotal, setPostsTotal] = useState(2);
 
     useEffect(() => {
-		togglePending(true);
-		const fetchPosts = async () => {
-			try {
-				// const posts = await api.getAllPosts(page);
-				const postsLength = await api.getPostsLength();
-				const posts = await api.getPaginatedPosts(page);
-				if (posts && postsLength) {
-					setBlogPosts(posts);
-					setPostsTotal(postsLength);
-				} else {
-					toggleNotFound();
-				}
-			} catch (error) {
-				console.error(error);
-				toggleNotFound();
-			}
-			togglePending(false);
-		};
-		fetchPosts();
-		return () => {
-			setBlogPosts(null);
-		};
-	}, [page]);
+        togglePending(true);
+        const fetchPosts = async () => {
+            try {
+                const postsLength = await api.getPostsLength();
+                const posts = await api.getPaginatedPosts(page);
+                if (posts && postsLength) {
+                    setBlogPosts(posts);
+                    setPostsTotal(postsLength);
+                } else {
+                    toggleNotFound();
+                }
+            } catch (error) {
+                console.error(error);
+                toggleNotFound();
+            }
+            togglePending(false);
+        };
+        fetchPosts();
+        return () => {
+            setBlogPosts(null);
+        };
+    }, [page]);
 
     if (blogPosts) {
         return (

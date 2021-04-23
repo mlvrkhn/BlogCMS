@@ -7,7 +7,7 @@ import { Client } from '../../prismic-config';
 class PrismicAPI {
 	async getPostsLength() {
 		const posts = await Client.query(
-			Prismic.Predicates.at('document.type', 'blog-post')
+			Prismic.Predicates.at('document.type', 'blog-post'),
 		);
 		return posts.results.length;
 	}
@@ -17,7 +17,6 @@ class PrismicAPI {
 			Prismic.Predicates.at('document.type', 'blog-post'),
 			{ pageSize: 2, page },
 		);
-		console.log(posts);
 		return posts.results;
 	}
 
