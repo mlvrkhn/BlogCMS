@@ -1,10 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
-
+import Swal from 'sweetalert2';
 import DefaultLayout from '../components/layout/DefaultLayout';
 import StyledContainer from '../styled/Container.styled';
 import useSendEmail from '../hooks/useSendEmail';
-import Swal from 'sweetalert2';
 
 const ContactPage = () => {
     const initial = {
@@ -14,15 +13,20 @@ const ContactPage = () => {
     };
     const [formData, setFormData] = useState(initial);
 
+    const { response, setEmail: doSendEmail } = useSendEmail();
+
     const handleChange = ({ name, value }) => {
         setFormData({ ...formData, [name]: value });
     };
-    
-    const handleSubmit = useCallback((e) => {
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const [emailStatus] = useSendEmail(formData);
-        setFormData(formData);
-    });
+        doSendEmail(formData);
+    };
+
+    if (response !== null) {
+        Swal.fire(response);
+    }
 
     return (
         <DefaultLayout title="Contact">
